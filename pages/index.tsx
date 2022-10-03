@@ -55,6 +55,16 @@ const Home: NextPage = () => {
     setInputValue("");
   };
 
+  const editHeading = (e: any) => {
+    const id = e.target.id;
+    const content = e.target.innerText;
+
+    const newHeadings = headings;
+    newHeadings[+id].content = content;
+
+    setHeadings(newHeadings);
+  };
+
   return (
     <div className="bg-white">
       <header className="flex items-center justify-between p-2 text-[#a9aeb8]">
@@ -127,31 +137,73 @@ const Home: NextPage = () => {
           <div className="flex flex-col gap-6 text-[#4e5663] ">
             {headings.map((heading, i) => {
               return heading.type === "h1" ? (
-                <h1 key={i} className="text-3xl font-bold" id={`${i}`}>
+                <h1
+                  key={i}
+                  className="text-3xl font-bold outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </h1>
               ) : heading.type === "h2" ? (
-                <h2 key={i} className="text-2xl font-bold" id={`${i}`}>
+                <h2
+                  key={i}
+                  className="text-2xl font-bold outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </h2>
               ) : heading.type === "h3" ? (
-                <h3 key={i} className="text-xl font-semibold" id={`${i}`}>
+                <h3
+                  key={i}
+                  className="text-xl font-semibold outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </h3>
               ) : heading.type === "h4" ? (
-                <h4 key={i} className="text-lg font-semibold" id={`${i}`}>
+                <h4
+                  key={i}
+                  className="text-lg font-semibold outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </h4>
               ) : heading.type === "h5" ? (
-                <h5 key={i} className="text-base font-semibold" id={`${i}`}>
+                <h5
+                  key={i}
+                  className="text-base font-semibold outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </h5>
               ) : heading.type === "h6" ? (
-                <h6 key={i} className="text-sm font-medium" id={`${i}`}>
+                <h6
+                  key={i}
+                  className="text-sm font-medium outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </h6>
               ) : (
-                <p key={i} className="text-base font-medium" id={`${i}`}>
+                <p
+                  key={i}
+                  className="text-base font-medium outline-none"
+                  id={`${i}`}
+                  onInput={editHeading}
+                  contentEditable="true"
+                >
                   {heading.content}
                 </p>
               );
