@@ -231,7 +231,7 @@ const Home: NextPage = () => {
             <div
               className="p-4 mt-4 ml-4 transition-all bg-white border rounded shadow-lg w-72 h-max"
               style={{
-                opacity: inputValue ? "1" : "0",
+                opacity: inputValue.substring(0, 1) === "/" ? "1" : "0",
               }}
             >
               <h1 className="text-base font-bold">Add blocks</h1>
