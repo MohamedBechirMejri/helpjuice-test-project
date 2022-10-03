@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
+import { useState } from "react";
 import {
   FiArrowDownLeft,
   FiBookOpen,
@@ -13,6 +14,47 @@ import {
 } from "react-icons/fi";
 
 const Home: NextPage = () => {
+  const [headings, setHeadings] = useState([
+    {
+      type: "p",
+      content:
+        "Your goal is to make a page that looks exactly like this one, and has the ability to create H1 text simply by typing / then 1, then typing text, and hitting enter.",
+    },
+  ]);
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    const command = inputValue.substring(0, 2);
+    const content =
+      inputValue.substring(0, 1) === "/"
+        ? inputValue.substring(2, inputValue.length)
+        : inputValue;
+
+    const heading = {
+      type:
+        command === "/1"
+          ? "h1"
+          : command === "/2"
+          ? "h2"
+          : command === "/3"
+          ? "h3"
+          : command === "/4"
+          ? "h4"
+          : command === "/5"
+          ? "h5"
+          : command === "/6"
+          ? "h6"
+          : "p",
+      content,
+    };
+
+    setHeadings([...headings, heading]);
+    setInputValue("");
+  };
+
   return (
     <div className="bg-white">
       <header className="flex items-center justify-between p-2 text-[#a9aeb8]">
@@ -42,7 +84,7 @@ const Home: NextPage = () => {
           </button>
         </div>
       </header>
-      <main className="mx-auto max-w-[600px] mt-4">
+      <main className="mx-auto max-w-[700px] mt-4">
         <div className="flex items-center justify-between w-full p-1 px-2 border rounded text-[#aaafb8]">
           <div className="flex items-center gap-2 text-sm">
             <p className="bg-[#d9f9e6] text-[#38795c] p-1 rounded px-2 font-bold">
@@ -73,6 +115,55 @@ const Home: NextPage = () => {
             <FiMoreVertical className="text-[#212936]" />
           </div>
         </div>
+
+        <form
+          className="flex flex-col w-full gap-4 mt-8"
+          onSubmit={handleSubmit}
+        >
+          <h1 className="text-4xl font-bold">
+            Front-end developer test project
+          </h1>
+          <hr />
+          <div className="flex flex-col gap-6 text-[#4e5663] ">
+            {headings.map((heading, i) => {
+              return heading.type === "h1" ? (
+                <h1 key={i} className="text-3xl font-bold" id={`${i}`}>
+                  {heading.content}
+                </h1>
+              ) : heading.type === "h2" ? (
+                <h2 key={i} className="text-2xl font-bold" id={`${i}`}>
+                  {heading.content}
+                </h2>
+              ) : heading.type === "h3" ? (
+                <h3 key={i} className="text-xl font-semibold" id={`${i}`}>
+                  {heading.content}
+                </h3>
+              ) : heading.type === "h4" ? (
+                <h4 key={i} className="text-lg font-semibold" id={`${i}`}>
+                  {heading.content}
+                </h4>
+              ) : heading.type === "h5" ? (
+                <h5 key={i} className="text-base font-semibold" id={`${i}`}>
+                  {heading.content}
+                </h5>
+              ) : heading.type === "h6" ? (
+                <h6 key={i} className="text-sm font-medium" id={`${i}`}>
+                  {heading.content}
+                </h6>
+              ) : (
+                <p key={i} className="text-base font-medium" id={`${i}`}>
+                  {heading.content}
+                </p>
+              );
+            })}
+          </div>
+          <input
+            placeholder="Type / for blocks, @ to link docs or people"
+            className="w-full outline-none"
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+          />
+        </form>
       </main>
     </div>
   );
