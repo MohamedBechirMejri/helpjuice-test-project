@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 
     const command = inputValue.substring(0, 2);
     const content =
-      inputValue.substring(0, 1) === "/"
+      inputValue.substring(0, 1) === "/" || inputValue.substring(0, 1) === "@"
         ? inputValue.substring(2, inputValue.length)
         : inputValue;
 
@@ -47,6 +47,8 @@ const Home: NextPage = () => {
           ? "h5"
           : command === "/6"
           ? "h6"
+          : command === "@ "
+          ? "a"
           : "p",
       content,
     };
@@ -196,6 +198,15 @@ const Home: NextPage = () => {
                 >
                   {heading.content}
                 </h6>
+              ) : heading.type === "a" ? (
+                <a
+                  href="#"
+                  key={i}
+                  className="text-base font-medium outline-none cursor-pointer hover:underline"
+                  id={`${i}`}
+                >
+                  {heading.content}
+                </a>
               ) : (
                 <p
                   key={i}
