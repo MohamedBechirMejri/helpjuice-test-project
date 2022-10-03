@@ -12,6 +12,7 @@ import {
   FiMoreVertical,
   FiUnlock,
 } from "react-icons/fi";
+import { RiText } from "react-icons/ri";
 
 const Home: NextPage = () => {
   const [headings, setHeadings] = useState([
@@ -220,12 +221,75 @@ const Home: NextPage = () => {
               );
             })}
           </div>
-          <input
-            placeholder="Type / for blocks, @ to link docs or people"
-            className="w-full outline-none text-[#5d6470] font-medium"
-            value={inputValue}
-            onChange={e => setInputValue(e.target.value)}
-          />
+          <div className="relative w-full">
+            <input
+              placeholder="Type / for blocks, @ to link docs or people"
+              className="w-full outline-none text-[#5d6470] font-medium"
+              value={inputValue}
+              onChange={e => setInputValue(e.target.value)}
+            />
+            <div
+              className="p-4 mt-4 ml-4 transition-all bg-white border rounded shadow-lg w-72 h-max"
+              style={{
+                opacity: inputValue ? "1" : "0",
+              }}
+            >
+              <h1 className="text-base font-bold">Add blocks</h1>
+              <p className="text-sm text-[#b2b7c0]">
+                Filtering keyword{" "}
+                <span className="ml-2 text-white bg-[#3565a9] px-1 rounded">
+                  {inputValue.substring(1, 2)}
+                </span>
+              </p>
+              <div className="transition-all ">
+                {[
+                  {
+                    title: "Heading 1",
+                    hint: "/1",
+                  },
+                  {
+                    title: "Heading 2",
+                    hint: "/2",
+                  },
+                  {
+                    title: "Heading 3",
+                    hint: "/3",
+                  },
+                  {
+                    title: "Heading 4",
+                    hint: "/4",
+                  },
+                  {
+                    title: "Heading 5",
+                    hint: "/5",
+                  },
+                  {
+                    title: "Heading 6",
+                    hint: "/6",
+                  },
+                  {
+                    title: "Anchor",
+                    hint: "@",
+                  },
+                ]
+                  .filter(h => h.hint.includes(inputValue.substring(1, 2)))
+                  .map((h, i) => (
+                    <div
+                      key={i * Math.random()}
+                      className="flex items-center gap-4 transition-all"
+                    >
+                      <RiText />
+                      <div className="mt-4">
+                        <p className="font-bold">{h.title}</p>
+                        <p className="text-sm text-[#b2b7c0]">
+                          Command: {h.hint} + space + text
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
         </form>
       </main>
     </div>
