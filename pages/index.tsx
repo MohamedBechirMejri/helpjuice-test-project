@@ -211,7 +211,7 @@ const Home: NextPage = () => {
           </div>
           <input
             placeholder="Type / for blocks, @ to link docs or people"
-            className="w-full outline-none"
+            className="w-full outline-none text-[#5d6470] font-medium"
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
