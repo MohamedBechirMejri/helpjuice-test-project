@@ -66,7 +66,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="p-2 bg-white">
       <header className="flex items-center justify-between p-2 text-[#a9aeb8]">
         <div className="flex items-center gap-4">
           <FiChevronsRight className="text-[#6c727f]" />
