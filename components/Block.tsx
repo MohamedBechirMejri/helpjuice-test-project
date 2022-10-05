@@ -20,6 +20,7 @@ const Block = ({
   const h1 = "text-4xl font-bold";
   const h2 = "text-2xl font-bold";
   const h3 = "text-xl font-semibold";
+  // styling Pseudo-elements using Tailwind is messy
   const checkbox = `relative flex items-center gap-2 text-lg font-medium cursor-pointer before:block before:w-6 before:h-6 before:rounded before:ring-2 before:ring-green-200 before:transition-all before:absolute before:-left-10 active:before:ring-4 ${
     isChecked && "before:bg-green-200 line-through"
   }`;
