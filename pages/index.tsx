@@ -30,8 +30,8 @@ const Home: NextPage = () => {
     setCommand("");
   };
 
-  const removeBlock = (e: any) => {
-    if (e.target.innerText === "") {
+  const removeBlock = (e: any, isDivider?: boolean) => {
+    if (e.target.innerText === "" || isDivider) {
       setBlocks(blocks.filter((b: any) => b.id !== e.target.id));
     }
   };

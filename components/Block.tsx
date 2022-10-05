@@ -45,7 +45,14 @@ const Block = ({
   }
 
   return block.type === "hr" ? (
-    <hr />
+    // put hr inside a div to give more clicking space for the user
+    <div
+      id={id}
+      onClick={e => removeBlock(e)}
+      className="flex items-center w-full h-4 cursor-pointer"
+    >
+      <hr className="w-full" />
+    </div>
   ) : (
     <div
       id={id}
