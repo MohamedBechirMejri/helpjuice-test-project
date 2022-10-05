@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Block = ({
   block,
@@ -9,6 +9,8 @@ const Block = ({
   id: string;
   removeBlock: any;
 }) => {
+  const [innerText, setInnerText] = useState(block.content);
+
   const h1 = "text-4xl font-bold";
   const h2 = "text-2xl font-bold";
   const h3 = "text-xl font-semibold";
@@ -30,11 +32,13 @@ const Block = ({
   return (
     <div
       contentEditable="true"
-      className={`outline-none ${type}`}
+      className={`outline-none after:[content:attr(data-placeholder);] ${type}`}
+      onInput={(e: any) => setInnerText(e.target.innerText)}
       onKeyDown={removeBlock}
       id={id}
+      data-placeholder={innerText === "" ? "Heading" : ""}
     >
-      {block.content} tet
+      {block.content}
     </div>
   );
 };
