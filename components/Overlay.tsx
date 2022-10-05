@@ -53,7 +53,7 @@ const Overlay = ({ addBlock, command }: { addBlock: any; command: string }) => {
             <div
               key={uniqid()}
               className="flex items-center gap-4 p-2 transition-all cursor-pointer hover:bg-gray-200"
-              onClick={e => addBlock(e, b.type)}
+              onClick={e => addBlock(e, b.type, b.title)}
             >
               <RiText className="shrink-0" />
               <div className="">
