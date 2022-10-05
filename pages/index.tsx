@@ -37,7 +37,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="p-2 bg-white">
+    <div className="p-2 bg-white pb-72">
       <Header />
       <main className="mx-auto max-w-[700px] mt-4">
         <Statusbar />
