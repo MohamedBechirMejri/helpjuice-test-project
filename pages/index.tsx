@@ -8,6 +8,7 @@ import uniqid from "uniqid";
 
 const Home: NextPage = () => {
   const [blocks, setBlocks] = useState([] as any[]);
+  const [isOverlayVisisibe, setIsOverlayVisible] = useState(true);
 
   useEffect(() => {
     setBlocks([
@@ -20,10 +21,10 @@ const Home: NextPage = () => {
     ]);
   }, []);
 
-  const addBlock = (e: any) => {
+  const addBlock = (e: any, type: string) => {
     e.preventDefault();
 
-    setBlocks([...blocks, { id: uniqid(), type: "h1", content: "i" }]);
+    setBlocks([...blocks, { id: uniqid(), type, content: "" }]);
   };
 
   const removeBlock = (e: any) => {
@@ -58,7 +59,7 @@ const Home: NextPage = () => {
               placeholder="Type / for blocks, @ to link docs or people"
               className="w-full outline-none text-[#5d6470] font-medium"
             />
-            <Overlay />
+            {isOverlayVisisibe && <Overlay addBlock={addBlock} />}
           </div>
         </form>
       </main>
