@@ -24,6 +24,11 @@ const Overlay = ({ addBlock, command }: { addBlock: any; command: string }) => {
       title: "Heading 3",
       hint: "Small section heading",
     },
+    {
+      type: "checkbox",
+      title: "Checkbox",
+      hint: "Todo list item",
+    },
   ];
   return (
     <div className="relative w-full">

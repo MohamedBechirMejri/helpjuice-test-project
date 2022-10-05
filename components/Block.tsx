@@ -14,10 +14,15 @@ const Block = ({
   setCommand: any;
 }) => {
   const [innerText, setInnerText] = useState(block.content);
+  const [isChecked, setIsChecked] = useState(false);
 
+  // styles based on element type
   const h1 = "text-4xl font-bold";
   const h2 = "text-2xl font-bold";
   const h3 = "text-xl font-semibold";
+  const checkbox = `relative flex items-center gap-2 text-lg font-medium cursor-pointer before:block before:w-6 before:h-6 before:rounded before:ring-2 before:ring-green-200 before:transition-all before:absolute before:-left-10 active:before:ring-4 ${
+    isChecked && "before:bg-green-200 line-through"
+  }`;
 
   const regex = /\/\S{0,}/gm;
 
@@ -33,6 +38,9 @@ const Block = ({
     case "h3":
       type = h3;
       break;
+    case "checkbox":
+      type = checkbox;
+      break;
   }
 
   return (
@@ -40,9 +48,16 @@ const Block = ({
       id={id}
       contentEditable="true"
       data-placeholder={
-        innerText ? "" : !type ? "Type / for Commands" : "Heading"
+        innerText
+          ? ""
+          : !type
+          ? "Type / for Commands"
+          : type === checkbox
+          ? "List Item"
+          : "Heading"
       }
-      className={`outline-none after:[content:attr(data-placeholder)] ${type} after:text-[#c1c1c1]`}
+      className={`outline-none after:[content:attr(data-placeholder)] ${type} after:text-[#c1c1c1] transition-all`}
+      onClick={() => setIsChecked(!isChecked)}
       onInput={(e: any) => {
         setInnerText(e.target.innerText);
 
