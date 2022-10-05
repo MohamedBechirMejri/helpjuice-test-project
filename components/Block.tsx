@@ -55,6 +55,8 @@ const Block = ({
         if (e.key === "Enter" || e.key === "Escape") {
           e.preventDefault();
           setCommand("");
+
+          addBlock(e);
         }
 
         if (e.key === "/") {
