@@ -8,7 +8,8 @@ import uniqid from "uniqid";
 
 const Home: NextPage = () => {
   const [blocks, setBlocks] = useState([] as any[]);
-  const [isOverlayVisisibe, setIsOverlayVisible] = useState(true);
+  const [command, setCommand] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     setBlocks([
@@ -21,10 +22,12 @@ const Home: NextPage = () => {
     ]);
   }, []);
 
-  const addBlock = (e: any, type: string) => {
+  const addBlock = (e: any, type: string, content = "") => {
     e.preventDefault();
 
-    setBlocks([...blocks, { id: uniqid(), type, content: "" }]);
+    setBlocks([...blocks, { id: uniqid(), type, content }]);
+    setInputValue("");
+    setCommand("");
   };
 
   const removeBlock = (e: any) => {
@@ -38,10 +41,7 @@ const Home: NextPage = () => {
       <Header />
       <main className="mx-auto max-w-[700px] mt-4">
         <Statusbar />
-        <form
-          className="flex flex-col w-full gap-4 mt-8"
-          onSubmit={e => addBlock(e)}
-        >
+        <form className="flex flex-col w-full gap-4 mt-8">
           <h1 className="text-4xl font-bold">
             Front-end developer test project
           </h1>
@@ -58,8 +58,22 @@ const Home: NextPage = () => {
             <input
               placeholder="Type / for blocks, @ to link docs or people"
               className="w-full outline-none text-[#5d6470] font-medium"
+              onKeyDown={(e: any) => {
+                if (e.key === "Enter") {
+                  addBlock(e, "p", e.target.value);
+                  e.target.value = "";
+                }
+              }}
+              onChange={(e: any) => {
+                setInputValue(e.target.value);
+
+                const regex = /\/\S{0,}/gm;
+                const command = e.target.value.match(regex);
+                command ? setCommand(command[0]) : setCommand("");
+              }}
+              value={inputValue}
             />
-            {isOverlayVisisibe && <Overlay addBlock={addBlock} />}
+            {command && <Overlay addBlock={addBlock} />}
           </div>
         </form>
       </main>
