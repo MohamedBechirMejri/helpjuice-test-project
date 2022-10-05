@@ -14,7 +14,7 @@
 - [x] Add blocks of Text (headings, simple text...) using commands
 - [x] Edit blocks
 - [x] Delete blocks
-- [ ] Filter commands
+- [x] Filter commands
 - [ ] Add block based on the location of where you called the command
 - [ ] More block types
 
