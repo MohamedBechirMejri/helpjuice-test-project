@@ -2,26 +2,19 @@ import React from "react";
 
 const Block = ({
   block,
-  index,
-  blocks,
-  setBlocks,
+  id,
+  removeBlock,
 }: {
   block: any;
-  index: number;
-  blocks: any;
-  setBlocks: any;
+  id: string;
+  removeBlock: any;
 }) => {
-  const deleteBlock = (e: any) => {
-    if (e.target.innerText === "" && e.key === "Backspace") {
-      setBlocks(blocks.filter((b: any, i: number) => i !== index));
-    }
-  };
-
   return (
     <div
       contentEditable="true"
       className="outline-none"
-      onKeyDown={deleteBlock}
+      onKeyDown={removeBlock}
+      id={id}
     >
       {block.content}
     </div>
