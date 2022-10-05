@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   };
 
   const removeBlock = (e: any) => {
-    if (e.target.innerText === "" && e.key === "Backspace") {
+    if (e.target.innerText === "") {
       setBlocks(blocks.filter((b: any) => b.id !== e.target.id));
     }
   };
@@ -53,6 +53,8 @@ const Home: NextPage = () => {
                 id={block.id}
                 key={block.id}
                 removeBlock={removeBlock}
+                addBlock={addBlock}
+                setCommand={setCommand}
               />
             ))}
             <input
