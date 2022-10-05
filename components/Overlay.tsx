@@ -29,6 +29,11 @@ const Overlay = ({ addBlock, command }: { addBlock: any; command: string }) => {
       title: "Checkbox",
       hint: "Todo list item",
     },
+    {
+      type: "hr",
+      title: "Divider",
+      hint: "Visually divide blocks",
+    },
   ];
   return (
     <div className="relative w-full">

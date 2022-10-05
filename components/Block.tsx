@@ -44,7 +44,9 @@ const Block = ({
       break;
   }
 
-  return (
+  return block.type === "hr" ? (
+    <hr />
+  ) : (
     <div
       id={id}
       contentEditable="true"
