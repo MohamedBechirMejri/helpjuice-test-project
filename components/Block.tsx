@@ -36,7 +36,9 @@ const Block = ({
       onInput={(e: any) => setInnerText(e.target.innerText)}
       onKeyDown={removeBlock}
       id={id}
-      data-placeholder={innerText === "" ? "Heading" : ""}
+      data-placeholder={
+        innerText ? "" : !type ? "Type / for Commands" : "Heading"
+      }
     >
       {block.content}
     </div>
