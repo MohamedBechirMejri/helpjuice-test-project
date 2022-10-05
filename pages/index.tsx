@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     if (Ref.current.innerHTML !== innerHTML) Ref.current.innerHTML = innerHTML;
   }, [innerHTML]);
 
-  const addBlock = (e: any, type: string, content = "") => {
+  const addElement = (e: any, type: string, content = "") => {
     e.preventDefault();
     setInnerHTML(innerHTML + `<${type}>${content}</${type}>`);
   };
@@ -35,10 +35,13 @@ const Home: NextPage = () => {
           onInput={(e: any) => {
             setInnerHTML(e.target.innerHTML);
           }}
+          onKeyDown={(e: any) => {
+            console.log("Caret at: ", e.target);
+          }}
         ></div>
         <form className="flex flex-col w-full gap-4 mt-8">
           <div className="flex flex-col gap-6 text-[#4e5663] ">
-            {<Overlay addBlock={addBlock} command={command} />}
+            {<Overlay addElement={addElement} command={command} />}
           </div>
         </form>
       </main>

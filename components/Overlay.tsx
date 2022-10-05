@@ -2,7 +2,13 @@ import React from "react";
 import { RiText } from "react-icons/ri";
 import uniqid from "uniqid";
 
-const Overlay = ({ addBlock, command }: { addBlock: any; command: string }) => {
+const Overlay = ({
+  addElement,
+  command,
+}: {
+  addElement: any;
+  command: string;
+}) => {
   const blockTypes = [
     {
       type: "p",
@@ -53,7 +59,7 @@ const Overlay = ({ addBlock, command }: { addBlock: any; command: string }) => {
             <div
               key={uniqid()}
               className="flex items-center gap-4 p-2 transition-all cursor-pointer hover:bg-gray-200"
-              onClick={e => addBlock(e, b.type, b.title)}
+              onClick={e => addElement(e, b.type, b.title)}
             >
               <RiText className="shrink-0" />
               <div className="">
