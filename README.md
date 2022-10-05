@@ -17,6 +17,8 @@
 - [x] Filter commands
 - [ ] Add block based on the location of where you called the command
 - [ ] More block types
+  - [x] Checkbox
+  - [ ] Divider
 
 <h3 style='width:100%;text-align:center'>
 
