@@ -75,7 +75,7 @@ const Home: NextPage = () => {
               }}
               value={inputValue}
             />
-            {command && <Overlay addBlock={addBlock} />}
+            {command && <Overlay addBlock={addBlock} command={command} />}
           </div>
         </form>
       </main>

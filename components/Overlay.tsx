@@ -1,7 +1,7 @@
 import React from "react";
 import { RiText } from "react-icons/ri";
 
-const Overlay = ({ addBlock }: { addBlock: any }) => {
+const Overlay = ({ addBlock, command }: { addBlock: any; command: string }) => {
   const blockTypes = [
     {
       type: "p",
@@ -31,12 +31,14 @@ const Overlay = ({ addBlock }: { addBlock: any }) => {
         <p className="text-sm text-[#b2b7c0]">
           Filtering keyword{" "}
           <span className="ml-2 text-white bg-[#3565a9] px-1 rounded">
-            {"/ inputValue".substring(1, 2)}
+            {command.substring(1)}
           </span>
         </p>
         <div className="mt-4 transition-all">
           {blockTypes
-            .filter(b => b.hint.includes("/".substring(1, 2)))
+            .filter(b =>
+              b.title.toLowerCase().includes(command.toLowerCase().substring(1))
+            )
             .map(b => (
               <div
                 key={Math.random()}
