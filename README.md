@@ -1,27 +1,39 @@
-# Next.js + Tailwind CSS Example
+<h1 style='width:100%;text-align:center'>Helpjuice Test Project</h1>
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+<h2 style='width:100%;text-align:center'>Technologies Used</h2>
 
-## Deploy your own
+<div style='display:flex;flex-wrap:wrap;justify-content:center;width:100%;'>
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+</div>
 
-## How to use
+<h2 style='width:100%;text-align:center'>Features</h2>
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+- [x] Responsive Design
+- [x] Add blocks of Text (headings, simple text...) using commands
+- [x] Edit blocks
+- [x] Delete blocks
+- [ ] Filter commands
+- [ ] Add block based on the location of where you called the command
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
+<h3 style='width:100%;text-align:center'>
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+[Demo](https://helpjuice-test-project.vercel.app)
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+</h3>
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+<h2 style='width:100%;text-align:center'>How To Use</h2>
+
+- Clone this Repo
+- Install Dependencies
+
+  ```bash
+  yarn
+  ```
+
+- Run Development Server
+
+  ```bash
+  yarn dev
+  ```
