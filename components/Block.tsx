@@ -17,17 +17,15 @@ const Block = ({
     }
   };
 
-  if (block.type === "p")
-    return (
-      <p
-        contentEditable="true"
-        className="outline-none"
-        onKeyDown={deleteBlock}
-      >
-        {block.content}
-      </p>
-    );
-  return <div></div>;
+  return (
+    <div
+      contentEditable="true"
+      className="outline-none"
+      onKeyDown={deleteBlock}
+    >
+      {block.content}
+    </div>
+  );
 };
 
 export default Block;
