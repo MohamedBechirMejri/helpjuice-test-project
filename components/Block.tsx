@@ -50,23 +50,23 @@ const Block = ({
         setCommand(command ? command[0] : "");
       }}
       onKeyDown={(e: any) => {
-        if (e.key === "Backspace") removeBlock(e);
-
-        if (e.key === "Escape") {
-          e.preventDefault();
-          setCommand("");
-        }
-
-        if (e.key === "Enter") {
-          e.preventDefault();
-          setCommand("");
-
-          addBlock(e);
-        }
-
-        if (e.key === "/") {
-          e.preventDefault();
-          setCommand("/");
+        switch (e.key) {
+          case "Backspace":
+            removeBlock(e);
+            break;
+          case "Escape":
+            e.preventDefault();
+            setCommand("");
+            break;
+          case "Enter":
+            e.preventDefault();
+            setCommand("");
+            addBlock(e);
+            break;
+          case "/":
+            e.preventDefault();
+            setCommand("/");
+            break;
         }
       }}
     >
