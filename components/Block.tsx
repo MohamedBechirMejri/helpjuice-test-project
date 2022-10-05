@@ -57,7 +57,7 @@ const Block = ({
           setCommand("");
         }
 
-        if (e.key === "Enter" || e.key === "Escape") {
+        if (e.key === "Enter") {
           e.preventDefault();
           setCommand("");
 
