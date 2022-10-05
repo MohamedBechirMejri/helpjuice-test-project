@@ -52,6 +52,11 @@ const Block = ({
       onKeyDown={(e: any) => {
         if (e.key === "Backspace") removeBlock(e);
 
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setCommand("");
+        }
+
         if (e.key === "Enter" || e.key === "Escape") {
           e.preventDefault();
           setCommand("");
