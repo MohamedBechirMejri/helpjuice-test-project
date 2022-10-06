@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       // @ts-ignore
       caret.focusNode.parentElement.insertAdjacentHTML(
         "afterend",
-        `<${type}>${content}</${type}>`
+        `<${type} class='outline-none after:[content:attr(data-placeholder)]   after:text-[#c1c1c1] transition-all' data-placeholder='${content}'></${type}>`
       );
 
       // remove command from text
