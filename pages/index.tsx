@@ -7,6 +7,7 @@ import getCaretCoordinates from "../libs/getCaretCoordinates";
 import getCaretElement from "../libs/getCaretElement";
 import getCaretIndex from "../libs/getCaretIndex";
 import moveCursortoNextElement from "../libs/moveCursortoNextElement";
+import clearCommand from "../libs/clearCommand";
 
 const Home: NextPage = () => {
   const [command, setCommand] = useState("");
@@ -34,17 +35,7 @@ const Home: NextPage = () => {
         "afterend",
         `<${type} class='outline-none before:[content:attr(data-placeholder)]   before:text-[#c1c1c1] transition-all' data-placeholder='${content}'></${type}>`
       );
-
-      // remove command from text
-      const caretIndex = getCaretIndex(caret.focusNode.parentElement);
-
-      const { innerHTML } = caret.focusNode.parentElement;
-      const newInnerHTML =
-        innerHTML.substring(0, caretIndex - command.length) +
-        innerHTML.substring(caretIndex);
-
-      caret.focusNode.parentElement.innerHTML = newInnerHTML;
-
+      clearCommand(caret, command);
       moveCursortoNextElement();
     }
     setCommand("");
