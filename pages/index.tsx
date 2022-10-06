@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from "react";
 import Overlay from "../components/Overlay";
 import getCaretCoordinates from "../libs/getCaretCoordinates";
 import getCaretElement from "../libs/getCaretElement";
-import getCaretIndex from "../libs/getCaretIndex";
 import moveCursortoNextElement from "../libs/moveCursortoNextElement";
 import clearCommand from "../libs/clearCommand";
 
