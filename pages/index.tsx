@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Statusbar from "../components/Statusbar";
 import { useEffect, useRef, useState } from "react";
 import Overlay from "../components/Overlay";
-import uniqid from "uniqid";
 import getCaretIndex from "../libs/getCaretIndex";
 import getCaretCoordinates from "../libs/getCaretCoordinates";
 
@@ -27,6 +26,7 @@ const Home: NextPage = () => {
   const addElement = (e: any, type: string, content = "") => {
     e.preventDefault();
     setInnerHTML(innerHTML + `<${type}>${content}</${type}>`);
+    setCommand("");
   };
 
   return (
@@ -43,16 +43,28 @@ const Home: NextPage = () => {
           }}
           onKeyDown={(e: any) => {
             // getCaretIndex(e.target);
+            if (command) {
+              e.preventDefault();
+              // only add letters or numbers
+              if (e.key.length === 1) setCommand(command + e.key);
+              if (e.key === "Backspace")
+                setCommand(command.substring(0, command.length - 1));
+              if (e.key === "Escape") setCommand("");
+            }
+            if (e.key === "/") {
+              e.preventDefault();
+              setCommand("/");
+            }
             setCaretCoordinates(getCaretCoordinates());
           }}
         ></div>
-        {
+        {command && (
           <Overlay
             addElement={addElement}
             command={command}
             caretCoordinates={caretCoordinates}
           />
-        }
+        )}
       </main>
     </div>
   );
