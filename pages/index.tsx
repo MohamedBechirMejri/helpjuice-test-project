@@ -57,6 +57,10 @@ const Home: NextPage = () => {
             setCaret(getCaretElement());
 
             if (command) {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                document.getElementById("o-0")?.click();
+              }
               // only add letters or numbers
               if (e.key.length === 1) setCommand(command + e.key);
 

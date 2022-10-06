@@ -58,9 +58,10 @@ const Overlay = ({
           .filter(b =>
             b.title.toLowerCase().includes(command.toLowerCase().substring(1))
           )
-          .map(b => (
+          .map((b: any, i: number) => (
             <div
               key={uniqid()}
+              id={"o-" + i}
               className="flex items-center gap-4 p-2 transition-all cursor-pointer hover:bg-gray-200"
               onClick={e => {
                 addElement(e, b.type, b.title);
