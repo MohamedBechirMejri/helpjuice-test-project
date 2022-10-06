@@ -48,7 +48,9 @@ const Overlay = ({
   ];
   return (
     <div
-      className="fixed p-4 ml-4 overflow-scroll transition-all bg-white border rounded shadow-lg w-72 h-80 scroll"
+      className={`fixed ml-4 overflow-y-scroll overflow-hidden transition-all bg-white rounded  scroll ${
+        command ? "w-72 h-[21rem] p-4 shadow-lg border" : "scale-x-0 scale-y-0"
+      } origin-top-left`}
       style={{
         top: caretCoordinates.y + 25,
         left: caretCoordinates.x,

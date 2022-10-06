@@ -100,13 +100,13 @@ const Home: NextPage = () => {
             typing text, and hitting enter.
           </p>
         </div>
-        {command && (
+        {
           <Overlay
             addElement={addElement}
             command={command}
             caretCoordinates={caretCoordinates}
           />
-        )}
+        }
       </main>
     </div>
   );
