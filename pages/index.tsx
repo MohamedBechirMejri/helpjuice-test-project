@@ -84,8 +84,13 @@ const Home: NextPage = () => {
             coords.x && coords.y && setCaretCoordinates(coords);
           }}
           onInput={e => {
-            console.log(caret);
-            // .parentElement.classList.toggle("after:opacity-0")
+            // @ts-ignore
+            const caretElement = window.getSelection().baseNode.parentElement;
+
+            caretElement.innerText.length &&
+              caretElement.classList.remove(
+                "before:[content:attr(data-placeholder)]"
+              );
           }}
         >
           <h1>Front-end developer test project</h1>
