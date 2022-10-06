@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       // @ts-ignore
       caret.focusNode.parentElement.insertAdjacentHTML(
         "afterend",
-        `<${type} class='outline-none after:[content:attr(data-placeholder)]   after:text-[#c1c1c1] transition-all' data-placeholder='${content}'></${type}>`
+        `<${type} class='outline-none before:[content:attr(data-placeholder)]   before:text-[#c1c1c1] transition-all' data-placeholder='${content}'></${type}>`
       );
 
       // remove command from text
@@ -69,6 +69,7 @@ const Home: NextPage = () => {
           }}
           onKeyDown={(e: any) => {
             setCaret(getCaretElement());
+
             if (command) {
               // only add letters or numbers
               if (e.key.length === 1) setCommand(command + e.key);
@@ -81,6 +82,10 @@ const Home: NextPage = () => {
             }
             const coords = getCaretCoordinates();
             coords.x && coords.y && setCaretCoordinates(coords);
+          }}
+          onInput={e => {
+            console.log(caret);
+            // .parentElement.classList.toggle("after:opacity-0")
           }}
         >
           <h1>Front-end developer test project</h1>
