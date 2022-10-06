@@ -47,6 +47,7 @@ const Home: NextPage = () => {
       // move cursor to next element
       const caretElementLength = caret.focusNode.parentElement.innerHTML.length;
       for (let i = 0; i < caretElementLength + 1; i++) {
+        // @ts-ignore
         window.getSelection()?.modify("move", "forward", "character");
       }
     }
