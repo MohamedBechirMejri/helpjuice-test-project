@@ -6,6 +6,7 @@ import Overlay from "../components/Overlay";
 import getCaretCoordinates from "../libs/getCaretCoordinates";
 import getCaretElement from "../libs/getCaretElement";
 import getCaretIndex from "../libs/getCaretIndex";
+import moveCursortoNextElement from "../libs/moveCursortoNextElement";
 
 const Home: NextPage = () => {
   const [command, setCommand] = useState("");
@@ -44,12 +45,7 @@ const Home: NextPage = () => {
 
       caret.focusNode.parentElement.innerHTML = newInnerHTML;
 
-      // move cursor to next element
-      const caretElementLength = caret.focusNode.innerHTML.length;
-      for (let i = 0; i < caretElementLength + 1; i++) {
-        // @ts-ignore
-        window.getSelection()?.modify("move", "forward", "character");
-      }
+      moveCursortoNextElement();
     }
     setCommand("");
   };
