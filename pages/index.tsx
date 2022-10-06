@@ -4,6 +4,8 @@ import Statusbar from "../components/Statusbar";
 import { useEffect, useRef, useState } from "react";
 import Overlay from "../components/Overlay";
 import uniqid from "uniqid";
+import getCaretIndex from "../libs/getCaretIndex";
+import getCaretCoordinates from "../libs/getCaretCoordinates";
 
 const Home: NextPage = () => {
   const [innerHTML, setInnerHTML] = useState(
@@ -11,6 +13,10 @@ const Home: NextPage = () => {
     <p class='m-0'>Your goal is to make a page that looks exactly like this one, and has the ability to create H1 text simply by typing / then 1, then typing text, and hitting enter.</p>`
   );
   const [command, setCommand] = useState("");
+  const [caretCoordinates, setCaretCoordinates] = useState({
+    x: 0,
+    y: 0,
+  });
 
   const Ref = useRef(null as any);
 
@@ -36,14 +42,17 @@ const Home: NextPage = () => {
             setInnerHTML(e.target.innerHTML);
           }}
           onKeyDown={(e: any) => {
-            console.log("Caret at: ", e.target);
+            // getCaretIndex(e.target);
+            setCaretCoordinates(getCaretCoordinates());
           }}
         ></div>
-        <form className="flex flex-col w-full gap-4 mt-8">
-          <div className="flex flex-col gap-6 text-[#4e5663] ">
-            {<Overlay addElement={addElement} command={command} />}
-          </div>
-        </form>
+        {
+          <Overlay
+            addElement={addElement}
+            command={command}
+            caretCoordinates={caretCoordinates}
+          />
+        }
       </main>
     </div>
   );
