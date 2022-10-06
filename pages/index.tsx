@@ -58,12 +58,12 @@ const Home: NextPage = () => {
 
             if (command) {
               // only add letters or numbers
-              e.key.length === 1 && setCommand(command + e.key);
+              if (e.key.length === 1) setCommand(command + e.key);
 
-              e.key === "Backspace" &&
+              if (e.key === "Backspace")
                 setCommand(command.substring(0, command.length - 1));
 
-              e.key === "Escape" && setCommand("");
+              if (e.key === "Escape") setCommand("");
             }
 
             if (e.key === "/") setCommand("/");
