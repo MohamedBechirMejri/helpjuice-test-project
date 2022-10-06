@@ -35,16 +35,16 @@ const Overlay = ({
       title: "Heading 3",
       hint: "Small section heading",
     },
-    {
-      type: "checkbox",
-      title: "Checkbox",
-      hint: "Todo list item",
-    },
-    {
-      type: "hr",
-      title: "Divider",
-      hint: "Visually divide blocks",
-    },
+    // {
+    //   type: "checkbox",
+    //   title: "Checkbox",
+    //   hint: "Todo list item",
+    // },
+    // {
+    //   type: "hr",
+    //   title: "Divider",
+    //   hint: "Visually divide blocks",
+    // },
   ];
   return (
     <div
