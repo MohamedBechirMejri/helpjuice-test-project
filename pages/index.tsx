@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import Overlay from "../components/Overlay";
 import getCaretCoordinates from "../libs/getCaretCoordinates";
 import getCaretElement from "../libs/getCaretElement";
+import getCaretIndex from "../libs/getCaretIndex";
 
 const Home: NextPage = () => {
   const [command, setCommand] = useState("");
@@ -32,6 +33,16 @@ const Home: NextPage = () => {
         "afterend",
         `<${type}>${content}</${type}>`
       );
+
+      // remove command from text
+      const caretIndex = getCaretIndex(caret.focusNode.parentElement);
+
+      const { innerHTML } = caret.focusNode.parentElement;
+      const newInnerHTML =
+        innerHTML.substring(0, caretIndex - command.length) +
+        innerHTML.substring(caretIndex);
+
+      caret.focusNode.parentElement.innerHTML = newInnerHTML;
     }
     setCommand("");
   };
