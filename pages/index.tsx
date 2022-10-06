@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Header from "../components/Header";
 import Statusbar from "../components/Statusbar";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Overlay from "../components/Overlay";
 import getCaretCoordinates from "../libs/getCaretCoordinates";
 import getCaretElement from "../libs/getCaretElement";
@@ -13,6 +13,16 @@ const Home: NextPage = () => {
     y: 0,
   });
   const [caret, setCaret] = useState(null as any);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    // @ts-ignore Focus the editor on load
+    ref.current.focus();
+
+    // @ts-ignore move caret to the end of div
+    window.getSelection()?.modify("move", "forward", "documentBoundary");
+  }, []);
 
   const addElement = (e: any, type: string, content = "") => {
     e.preventDefault();
@@ -32,6 +42,7 @@ const Home: NextPage = () => {
       <main className="mx-auto max-w-[700px] mt-4">
         <Statusbar />
         <div
+          ref={ref}
           contentEditable="true"
           className="mt-8 prose outline-none max-w-none min-w-screen"
           onBlur={e => {
